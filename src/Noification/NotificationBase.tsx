@@ -6,6 +6,16 @@ import {Props} from './Props';
 
 export class NotificationBase extends React.Component<Props, {}> {
 
+  static show: Function;
+  static hide: Function;
+
+  constructor(props: Props) {
+    super(props);
+
+    NotificationBase.show = () => this.show();
+    NotificationBase.hide = () => this.hide();
+  }
+
   protected translateY: Animated.Value = new Animated.Value(-300);
   protected offset: number = 22;
   protected viewHeight: number = 0;

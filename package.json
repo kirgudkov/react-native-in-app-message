@@ -1,6 +1,6 @@
 {
   "name": "react-native-in-app-message",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native in-app native-like notifications.",
   "files": [
     "src",

@@ -12,6 +12,6 @@ export interface NotificationProperties {
 }
 
 export class Notification extends React.Component<NotificationProperties, {}> {
-  show: Function;
-  hide: Function;
+  static show: Function;
+  static hide: Function;
 }
