@@ -1,6 +1,8 @@
 React Native in-app platform-specific notifications. 
 
-<img src="" width="40" height="40" />
+
+<img src="https://user-images.githubusercontent.com/17552441/50739935-cae35080-11f7-11e9-96f9-a87579e405dd.gif" width="250" height="400" /><img src="https://user-images.githubusercontent.com/17552441/50739938-db93c680-11f7-11e9-84e3-a7a07feba7b9.gif" width="200" height="400" /><img src="https://user-images.githubusercontent.com/17552441/50739945-e9e1e280-11f7-11e9-9d0b-4d15db0e1c3d.gif" width="200" height="400" />
+
 
 - The package uses react-native-blur and gesture-handler to implement native-like appearance
 - Compatible with iPhone X, XR, XS, XS Max.
