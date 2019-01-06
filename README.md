@@ -1,7 +1,7 @@
 React Native in-app platform-specific notifications. 
 
 
-<img src="https://user-images.githubusercontent.com/17552441/50739935-cae35080-11f7-11e9-96f9-a87579e405dd.gif" width="320" height="500" /><img src="https://user-images.githubusercontent.com/17552441/50739938-db93c680-11f7-11e9-84e3-a7a07feba7b9.gif" width="240" height="500" /><img src="https://user-images.githubusercontent.com/17552441/50739945-e9e1e280-11f7-11e9-9d0b-4d15db0e1c3d.gif" width="240" height="500" />
+<img src="https://user-images.githubusercontent.com/17552441/50739938-db93c680-11f7-11e9-84e3-a7a07feba7b9.gif" width="240" height="500" /><img src="https://user-images.githubusercontent.com/17552441/50739945-e9e1e280-11f7-11e9-9d0b-4d15db0e1c3d.gif" width="240" height="500" /><img src="https://user-images.githubusercontent.com/17552441/50739935-cae35080-11f7-11e9-96f9-a87579e405dd.gif" width="300" height="500" />
 
 
 - The package uses react-native-blur and gesture-handler to implement native-like appearance
