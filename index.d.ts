@@ -7,7 +7,8 @@ export interface NotificationProperties {
   blurAmount?: number,
   text?: string,
   textColor?: string,
-  customComponent?: ReactNode
+  customComponent?: ReactNode,
+  onPress?: () => void
 }
 
 export class Notification extends React.Component<NotificationProperties, {}> {

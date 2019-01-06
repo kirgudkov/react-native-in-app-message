@@ -7,5 +7,6 @@ export interface Props {
   autohide: boolean,
   text?: string,
   textColor?: string,
-  customComponent?: ReactNode
+  customComponent?: ReactNode,
+  onPress?: () => void
 }

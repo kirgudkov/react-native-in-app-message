@@ -33,14 +33,14 @@ export class NotificationBase extends React.Component<Props, {}>{
 
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
     if (event.nativeEvent.translationY > 0) {
-      this.translateY.setValue(event.nativeEvent.translationY / 5);
+      this.translateY.setValue(event.nativeEvent.translationY / 10);
     } else if (event.nativeEvent.translationY < 0) {
       this.translateY.setValue(event.nativeEvent.translationY);
     }
   };
 
   protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
-    if (event.nativeEvent.translationY > 0) {
+    if (event.nativeEvent.translationY > ((this.viewHeight / 2) * -1)) {
       this.showNotification();
     } else {
       this.hideNotification();

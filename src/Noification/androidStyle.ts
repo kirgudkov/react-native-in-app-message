@@ -2,32 +2,30 @@ import {StyleSheet} from "react-native";
 
 export const androidStyle = StyleSheet.create({
   notification: {
-    width: '100',
-    shadowColor: '#000',
+    width: '96%',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    top: 22,
+    backgroundColor: '#fff',
+    top: 0,
+    elevation: 6,
     zIndex: 2,
-    elevation: 2,
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-    borderRadius: 12,
     position: 'absolute',
     alignSelf: 'center'
   },
+  container: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   text: {
-    fontSize: 16,
+    fontSize: 18,
+    marginVertical: 16,
   },
   content: {
     width: '98%',
     flex: 1,
-    margin: 14,
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: -4
   },
 });
