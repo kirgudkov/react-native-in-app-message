@@ -11,13 +11,14 @@ export class Notification extends NotificationBase {
   static defaultProps = {
     blurAmount: 7,
     duration: 2000,
+    showKnob: true,
     autohide: true
   };
 
   protected offset: number = Util.isIphoneX() ? 42 : 22;
 
   render(): ReactNode {
-    const {textColor, customComponent, blurAmount, blurType = 'light', onPress} = this.props;
+    const {textColor, customComponent, blurAmount, blurType = 'light', onPress, showKnob} = this.props;
     const animatedStyle = [IOStyle.notification, {top: this.offset, transform: [{translateY: this.translateY}]}];
     return (
       <PanGestureHandler onHandlerStateChange={this.onHandlerStateChange} onGestureEvent={this.onGestureEvent}>
@@ -27,7 +28,7 @@ export class Notification extends NotificationBase {
             <View style={IOStyle.content}>
               {customComponent ? this.renderCustomComponent() : this.renderOwnComponent()}
             </View>
-            <View style={[IOStyle.knob, {backgroundColor: textColor}]} />
+            {showKnob && <View style={[IOStyle.knob, {backgroundColor: textColor}]} />}
           </TouchableOpacity>
         </Animated.View>
       </PanGestureHandler>

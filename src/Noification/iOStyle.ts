@@ -6,6 +6,7 @@ export const IOStyle = StyleSheet.create({
     shadowColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
     shadowOffset: {
       width: 0,
       height: 6,
@@ -27,6 +28,8 @@ export const IOStyle = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+    marginVertical: 16,
+    marginHorizontal: 10
   },
   knob: {
     width: 50,
@@ -34,7 +37,7 @@ export const IOStyle = StyleSheet.create({
     backgroundColor: '#ffffff',
     opacity: 0.3,
     borderRadius: 4,
-    marginBottom: 6
+    marginVertical: 6,
   },
   absolute: {
     position: "absolute",
@@ -43,11 +46,9 @@ export const IOStyle = StyleSheet.create({
     borderRadius: 12,
   },
   content: {
-    width: '98%',
+    width: '100%',
     flex: 1,
-    margin: 14,
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: -4
   },
 });

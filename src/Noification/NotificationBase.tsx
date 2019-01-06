@@ -6,8 +6,8 @@ import {Props} from './Props';
 
 export class NotificationBase extends React.Component<Props, {}> {
 
-  static show: Function;
-  static hide: Function;
+  public static show: Function;
+  public static hide: Function;
 
   constructor(props: Props) {
     super(props);

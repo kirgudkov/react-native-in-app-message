@@ -5,6 +5,7 @@ export interface Props {
   blurAmount?: number, // iOS Only
   duration?: number,
   autohide?: boolean,
+  showKnob?: boolean,
   text?: string,
   textColor?: string,
   customComponent?: ReactNode,
