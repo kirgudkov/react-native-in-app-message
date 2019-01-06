@@ -23,14 +23,14 @@ import {Notification} from "react-native-in-app-message";
 
 render() {
     return (
-      <View>
+      <Fragment>
         <AppNavigator screenProps={{showNotification: () => this.notificaftion.show()}} />
         <Notification 
             text={'Hello world'}
             onPress={() => this.notificaftion.hide()} 
             ref={node => this.notification = node} 
             textColor={'#000'} />
-      </View>
+      </Fragment>
     )
   }
 
