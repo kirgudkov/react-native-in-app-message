@@ -1,0 +1,27 @@
+{
+  "name": "react-native-in-app-message",
+  "version": "0.0.1",
+  "description": "",
+  "files": [
+    "src",
+    "index.d.ts"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KirillGudkov/react-native-in-app-message.git"
+  },
+  "author": "Kirill Gudkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KirillGudkov/react-native-in-app-message/issues"
+  },
+  "homepage": "https://github.com/KirillGudkov/react-native-in-app-message#readme",
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  }
+}
