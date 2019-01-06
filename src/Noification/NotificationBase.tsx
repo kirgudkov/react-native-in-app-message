@@ -4,7 +4,7 @@ import {PanGestureHandlerGestureEvent} from "react-native-gesture-handler";
 import {IOStyle} from "./iOStyle";
 import {Props} from './Props';
 
-export class NotificationBase extends React.Component<Props, {}>{
+export class NotificationBase extends React.Component<Props, {}> {
 
   protected translateY: Animated.Value = new Animated.Value(-300);
   protected offset: number = 22;
@@ -13,15 +13,10 @@ export class NotificationBase extends React.Component<Props, {}>{
 
   public show = (): void => {
     clearTimeout(this.timer);
-    const {autohide, duration} = this.props;
     Animated.spring(this.translateY, {
       toValue: 0,
       useNativeDriver: true
-    }).start(() => {
-      if (autohide) {
-        this.timer = setTimeout(this.hide, duration);
-      }
-    });
+    }).start(() => this.props.autohide && (this.timer = setTimeout(this.hide, this.props.duration)));
   };
 
   public hide = (): void => {
@@ -32,15 +27,12 @@ export class NotificationBase extends React.Component<Props, {}>{
   };
 
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
-    if (event.nativeEvent.translationY > 0) {
-      this.translateY.setValue(event.nativeEvent.translationY / 10);
-    } else if (event.nativeEvent.translationY < 0) {
-      this.translateY.setValue(event.nativeEvent.translationY);
-    }
+    const {translationY} = event.nativeEvent;
+    this.translateY.setValue(translationY > 0 ? translationY / 10 : translationY);
   };
 
   protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
-    if (event.nativeEvent.translationY > ((this.viewHeight / 1.4) * -1)) {
+    if (event.nativeEvent.translationY > ((this.viewHeight / 2) * -1)) {
       this.show();
     } else {
       this.hide();
