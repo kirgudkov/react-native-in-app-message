@@ -3,6 +3,8 @@ React Native in-app platform-specific notifications.
 
 <img src="https://user-images.githubusercontent.com/17552441/50739938-db93c680-11f7-11e9-84e3-a7a07feba7b9.gif" width="200" height="400" /><img src="https://user-images.githubusercontent.com/17552441/50739945-e9e1e280-11f7-11e9-9d0b-4d15db0e1c3d.gif" width="200" height="400" /><img src="https://user-images.githubusercontent.com/17552441/50739935-cae35080-11f7-11e9-96f9-a87579e405dd.gif" width="260" height="400" />
 
+<img src="https://user-images.githubusercontent.com/17552441/50741960-c9288580-1215-11e9-8a4f-d2baa8778329.gif" width="200" height="200" />
+
 
 - The package uses react-native-blur and gesture-handler to implement native-like appearance
 - Compatible with iPhone X, XR, XS, XS Max.
@@ -43,6 +45,7 @@ render() {
 
 - `blurType` - must be one of 'xlight' | 'light' | 'dark'. iOS Only
 - `blurAmount` - number. iOS Only
+- `showKnob` - boolean. iOS Only.
 - `duration` - number. Message duration
 - `autohide` - boolean.
 - `text` - string. The text for the message. Required if `customComponent` is not used.
