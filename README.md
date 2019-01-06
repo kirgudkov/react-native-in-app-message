@@ -20,16 +20,15 @@ React Native in-app platform-specific notifications.
 import {Notification} from "react-native-in-app-message";
 
 ...
+// Somewhere call
+Notification.show();
+...
 
 render() {
     return (
       <Fragment>
-        <AppNavigator screenProps={{showNotification: () => this.notificaftion.show()}} />
-        <Notification 
-            text={'Hello world'}
-            onPress={() => this.notificaftion.hide()} 
-            ref={node => this.notification = node} 
-            textColor={'#000'} />
+        <AppNavigator/>
+        <Notification text={'Hello world'} onPress={() => Notification.hide()} textColor={'#000'} />
       </Fragment>
     )
   }
@@ -37,8 +36,8 @@ render() {
 ```
 
 # Methods
-- `show()`
-- `hide()`
+- static `show()`
+- static `hide()`
 
 ## Props
 
