@@ -11,7 +11,7 @@ export class NotificationBase extends React.Component<Props, {}>{
   protected viewHeight: number = 0;
   protected timer!: number;
 
-  public showNotification = (): void => {
+  public show = (): void => {
     clearTimeout(this.timer);
     const {autohide, duration} = this.props;
     Animated.spring(this.translateY, {
@@ -19,12 +19,12 @@ export class NotificationBase extends React.Component<Props, {}>{
       useNativeDriver: true
     }).start(() => {
       if (autohide) {
-        this.timer = setTimeout(this.hideNotification, duration);
+        this.timer = setTimeout(this.hide, duration);
       }
     });
   };
 
-  public hideNotification = (): void => {
+  public hide = (): void => {
     Animated.spring(this.translateY, {
       toValue: (this.viewHeight + this.offset) * -1,
       useNativeDriver: true
@@ -41,9 +41,9 @@ export class NotificationBase extends React.Component<Props, {}>{
 
   protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
     if (event.nativeEvent.translationY > ((this.viewHeight / 1.4) * -1)) {
-      this.showNotification();
+      this.show();
     } else {
-      this.hideNotification();
+      this.hide();
     }
   };
 
