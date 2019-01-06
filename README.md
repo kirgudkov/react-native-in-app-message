@@ -36,4 +36,13 @@ render() {
 
 ```
 
-## 
+## Props
+
+- `blurType` - must be one of 'xlight' | 'light' | 'dark'. iOS Only
+- `blurAmount` - number. iOS Only
+- `duration` - number. Message duration
+- `autohide` - boolean.
+- `text` - string. The text for the message. Required if `customComponent` is not used.
+- `textColor` - string.
+- `customComponent` - ReactNode.
+- `onPress` - Function
