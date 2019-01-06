@@ -36,6 +36,10 @@ render() {
 
 ```
 
+# Methods
+- `show()`
+- `hide()`
+
 ## Props
 
 - `blurType` - must be one of 'xlight' | 'light' | 'dark'. iOS Only
