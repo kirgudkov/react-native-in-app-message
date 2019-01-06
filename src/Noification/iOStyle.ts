@@ -6,7 +6,6 @@ export const IOStyle = StyleSheet.create({
     shadowColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
-    overflow: 'hidden',
     shadowOffset: {
       width: 0,
       height: 6,
@@ -47,7 +46,7 @@ export const IOStyle = StyleSheet.create({
   },
   content: {
     width: '100%',
-    flex: 1,
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
