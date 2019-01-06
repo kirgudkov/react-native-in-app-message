@@ -12,8 +12,16 @@ export class NotificationBase extends React.Component<Props, {}> {
   constructor(props: Props) {
     super(props);
 
-    NotificationBase.show = () => this.show();
-    NotificationBase.hide = () => this.hide();
+    NotificationBase.show = () => {
+      try {
+        this.show();
+      } catch (e) {}
+    };
+    NotificationBase.hide = () => {
+      try {
+        this.hide();
+      } catch (e) {}
+    }
   }
 
   protected translateY: Animated.Value = new Animated.Value(-300);
