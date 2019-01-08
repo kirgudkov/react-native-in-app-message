@@ -1,23 +1,29 @@
 import {StyleSheet} from "react-native";
 
 export const IOStyle = StyleSheet.create({
+  mainStyle: {
+    alignSelf: 'center',
+    position: 'absolute',
+    top: 22,
+  },
+  innerContainer: {
+    width: '100%'
+  },
   notification: {
     width: '95%',
-    shadowColor: '#000',
+    zIndex: 2,
+    elevation: 2,
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 6,
     },
-    top: 22,
-    zIndex: 2,
-    elevation: 2,
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-    borderRadius: 12,
-    position: 'absolute',
-    alignSelf: 'center'
+    borderRadius: 14,
   },
   container: {
     width: '100%',
@@ -42,7 +48,7 @@ export const IOStyle = StyleSheet.create({
     position: "absolute",
     width: '100%',
     height: '100%',
-    borderRadius: 12,
+    borderRadius: 14,
   },
   content: {
     width: '100%',

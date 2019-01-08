@@ -4,6 +4,7 @@ import {
   ForceTouchGestureHandlerStateChangeEvent,
   PanGestureHandlerGestureEvent
 } from "react-native-gesture-handler";
+import {StyleProp, ViewStyle} from "react-native";
 
 export interface Props {
   blurType?: 'xlight' | 'light' | 'dark', // iOS Only
@@ -12,6 +13,7 @@ export interface Props {
   autohide?: boolean,
   showKnob?: boolean,
   text?: string,
+  style?: StyleProp<ViewStyle> | {}, // iOS Only
   textColor?: string,
   customComponent?: ReactNode,
   onPress?: () => void,

@@ -30,6 +30,7 @@ export class NotificationBase extends React.Component<Props, {}> {
   protected offset: number = 22;
   protected viewHeight: number = 0;
   protected timer!: number;
+  private onLayoutBeenInvoked = false;
 
   public show = (): void => {
     clearTimeout(this.timer);
@@ -52,14 +53,17 @@ export class NotificationBase extends React.Component<Props, {}> {
 
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
     const {translationY} = event.nativeEvent;
-    this.translateY.setValue(translationY > 0 ? translationY / 10 : translationY);
+    this.translateY.setValue(translationY > 0 ? translationY / 7 : translationY);
     if (this.props.onDragGestureEvent) {
       this.props.onDragGestureEvent(event);
     }
   };
 
   protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
-    const {velocityY, translationY} = event.nativeEvent
+    const {velocityY, translationY} = event.nativeEvent;
+    if (this.props.onDragGestureHandlerStateChange) {
+      this.props.onDragGestureHandlerStateChange(event);
+    }
     if (velocityY < -400) {
       Animated.timing(this.translateY, {
         duration: 600,
@@ -74,19 +78,18 @@ export class NotificationBase extends React.Component<Props, {}> {
     } else {
       this.hide();
     }
-
-    if (this.props.onDragGestureHandlerStateChange) {
-      this.props.onDragGestureHandlerStateChange(event);
-    }
   };
 
   protected handleOnLayout = (event: any): void => {
     this.viewHeight = event.nativeEvent.layout.height;
-    Animated.timing(this.translateY, {
-      duration: 0,
-      toValue: (event.nativeEvent.layout.height + this.offset) * -1,
-      useNativeDriver: true
-    }).start();
+    if (!this.onLayoutBeenInvoked) {
+      this.onLayoutBeenInvoked = true;
+      Animated.timing(this.translateY, {
+        duration: 0,
+        toValue: (event.nativeEvent.layout.height + this.offset) * -1,
+        useNativeDriver: true
+      }).start();
+    }
   };
 
   protected renderCustomComponent(): ReactNode {

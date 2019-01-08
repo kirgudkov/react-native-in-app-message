@@ -1,5 +1,5 @@
 import React, {ReactNode, Fragment} from 'react';
-import {Animated, Dimensions, View, Text, TouchableOpacity} from 'react-native';
+import {Animated, Dimensions, View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {
   PanGestureHandler, PanGestureHandlerGestureEvent, ForceTouchGestureHandler,
   ForceTouchGestureHandlerStateChangeEvent,
@@ -24,25 +24,28 @@ export class Notification extends NotificationBase {
   protected offset: number = Util.isIphoneX() ? 42 : 22;
 
   render(): ReactNode {
-    const {textColor, customComponent, blurAmount, blurType = 'light', onPress, useForceTouch, showKnob, onForceTouchGestureEvent, onForceTouchHandlerStateChange} = this.props;
-    const animatedStyle = [IOStyle.notification, {top: this.offset, transform: [{translateY: this.translateY}]}];
+    const {textColor, customComponent, blurAmount, blurType = 'light', onPress, style, useForceTouch, showKnob, onForceTouchGestureEvent, onForceTouchHandlerStateChange} = this.props;
+    const animatedStyle = [IOStyle.notification, {top: this.offset, transform: [{translateY: this.translateY}]}, IOStyle.mainStyle];
+    const border = style ? style.borderRadius : 14;
     return (
       <Fragment>
         <PanGestureHandler onHandlerStateChange={this.onHandlerStateChange} onGestureEvent={this.onGestureEvent}>
           <Animated.View onLayout={this.handleOnLayout} style={animatedStyle}>
-            <TouchableOpacity style={IOStyle.container} activeOpacity={1} onPress={onPress}>
-              <BlurView style={IOStyle.absolute} blurType={blurType} blurAmount={blurAmount} />
-              <ForceTouchGestureHandler
-                minForce={0.2}
-                enabled={useForceTouch}
-                onGestureEvent={onForceTouchGestureEvent}
-                onHandlerStateChange={onForceTouchHandlerStateChange}>
-                <View style={IOStyle.content}>
-                  {customComponent ? this.renderCustomComponent() : this.renderOwnComponent()}
-                </View>
-              </ForceTouchGestureHandler>
-              {showKnob && <View style={[IOStyle.knob, {backgroundColor: textColor}]} />}
-            </TouchableOpacity>
+            <Animated.View style={[IOStyle.innerContainer, style]}>
+              <TouchableOpacity style={IOStyle.container} activeOpacity={1} onPress={onPress}>
+                <BlurView style={[IOStyle.absolute, {borderRadius: border || 14}]} blurType={blurType} blurAmount={blurAmount} />
+                <ForceTouchGestureHandler
+                  minForce={0.2}
+                  enabled={useForceTouch}
+                  onGestureEvent={onForceTouchGestureEvent}
+                  onHandlerStateChange={onForceTouchHandlerStateChange}>
+                  <View style={IOStyle.content}>
+                    {customComponent ? this.renderCustomComponent() : this.renderOwnComponent()}
+                    {showKnob && <View style={[IOStyle.knob, {backgroundColor: textColor}]} />}
+                  </View>
+                </ForceTouchGestureHandler>
+              </TouchableOpacity>
+            </Animated.View>
           </Animated.View>
         </PanGestureHandler>
       </Fragment>
