@@ -15,12 +15,14 @@ export class NotificationBase extends React.Component<Props, {}> {
     NotificationBase.show = () => {
       try {
         this.show();
-      } catch (e) {}
+      } catch (e) {
+      }
     };
     NotificationBase.hide = () => {
       try {
         this.hide();
-      } catch (e) {}
+      } catch (e) {
+      }
     }
   }
 
@@ -51,6 +53,9 @@ export class NotificationBase extends React.Component<Props, {}> {
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
     const {translationY} = event.nativeEvent;
     this.translateY.setValue(translationY > 0 ? translationY / 10 : translationY);
+    if (this.props.onDragGestureEvent) {
+      this.props.onDragGestureEvent(event);
+    }
   };
 
   protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
@@ -68,6 +73,10 @@ export class NotificationBase extends React.Component<Props, {}> {
       this.show();
     } else {
       this.hide();
+    }
+
+    if (this.props.onDragGestureHandlerStateChange) {
+      this.props.onDragGestureHandlerStateChange(event);
     }
   };
 
