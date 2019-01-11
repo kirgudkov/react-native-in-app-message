@@ -16,21 +16,38 @@ export class NotificationBase extends React.Component<Props, {}> {
       try {
         this.show();
       } catch (e) {
+        throw new Error('Unable to show Notification, because there is no instance of Notification');
       }
     };
     NotificationBase.hide = () => {
       try {
         this.hide();
       } catch (e) {
+        throw new Error('Unable to hide Notification, because there is no instance of Notification');
       }
     }
   }
 
+  /**
+   * onLayout is not invoked immediately, so by default the value is pretty high.
+   * Afterwards the value will be changed depending on the @viewHeight value
+   */
   protected translateY: Animated.Value = new Animated.Value(-9000);
+
+  /**
+   * Default StatusBar offset.
+   * .ios component overrides it depending on the type of iPhone
+   */
   protected offset: number = 22;
+
+  /**
+   * Height of Notification's root view, it changes after onLayout invoking
+   */
   protected viewHeight: number = 0;
+
+  private onLayoutHasBeenInvoked = false;
+
   protected timer!: number;
-  private onLayoutBeenInvoked = false;
 
   public show = (): void => {
     clearTimeout(this.timer);
@@ -53,7 +70,7 @@ export class NotificationBase extends React.Component<Props, {}> {
 
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
     const {translationY} = event.nativeEvent;
-    this.translateY.setValue(translationY > 0 ? translationY / 7 : translationY);
+    this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY);
     if (this.props.onDragGestureEvent) {
       this.props.onDragGestureEvent(event);
     }
@@ -81,12 +98,14 @@ export class NotificationBase extends React.Component<Props, {}> {
   };
 
   protected handleOnLayout = (event: any): void => {
-    this.viewHeight = event.nativeEvent.layout.height;
-    if (!this.onLayoutBeenInvoked) {
-      this.onLayoutBeenInvoked = true;
+    const {height} = event.nativeEvent.layout;
+    this.viewHeight = height;
+    if (!this.onLayoutHasBeenInvoked) {
+      this.onLayoutHasBeenInvoked = true;
+
       Animated.timing(this.translateY, {
         duration: 0,
-        toValue: (event.nativeEvent.layout.height + this.offset) * -1,
+        toValue: (height + this.offset) * -1,
         useNativeDriver: true
       }).start();
     }
