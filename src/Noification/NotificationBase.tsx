@@ -73,12 +73,12 @@ export class NotificationBase extends React.Component<Props, {}> {
   private autohide = () => {
     const {autohide, duration} = this.props;
     autohide && (this.timer = setTimeout(this.hide, duration));
-  }
+  };
 
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
-    const {translationY, velocityY} = event.nativeEvent;
+    const {translationY} = event.nativeEvent;
 
-    this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY/3.5);
+    this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY / 3.5);
 
     if (this.props.onDragGestureEvent) {
       this.props.onDragGestureEvent(event);
