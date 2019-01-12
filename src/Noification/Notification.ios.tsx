@@ -25,7 +25,10 @@ export class Notification extends NotificationBase {
 
   render(): ReactNode {
     const {textColor, customComponent, blurAmount, blurType = 'light', onPress, style, useForceTouch, showKnob, onForceTouchGestureEvent, onForceTouchHandlerStateChange} = this.props;
-    const animatedStyle = [IOStyle.notification, {top: this.offset, transform: [{translateY: this.translateY}]}, IOStyle.mainStyle];
+    const animatedStyle = [IOStyle.notification, {
+      top: this.offset,
+      transform: [{translateY: this.translateY}]
+    }, IOStyle.mainStyle];
     const border = style ? style.borderRadius : 14;
     return (
       <Fragment>

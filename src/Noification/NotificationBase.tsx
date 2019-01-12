@@ -4,6 +4,9 @@ import {PanGestureHandlerGestureEvent} from "react-native-gesture-handler";
 import {IOStyle} from "./iOStyle";
 import {Props} from './Props';
 
+const animatedDuration = 400;
+const minVelocityToFling = -250;
+
 export class NotificationBase extends React.Component<Props, {}> {
 
   static show: Function;
@@ -23,7 +26,7 @@ export class NotificationBase extends React.Component<Props, {}> {
       try {
         this.hide();
       } catch (e) {
-        throw new Error('Unable to hide Notification, because there is no instance of Notification');
+        throw new Error('Unable to show Notification, because there is no instance of Notification');
       }
     }
   }
@@ -44,7 +47,6 @@ export class NotificationBase extends React.Component<Props, {}> {
    * Height of Notification's root view, it changes after onLayout invoking
    */
   protected viewHeight: number = 0;
-
   private onLayoutHasBeenInvoked = false;
 
   protected timer!: number;
@@ -54,23 +56,30 @@ export class NotificationBase extends React.Component<Props, {}> {
     Animated.timing(this.translateY, {
       toValue: 0,
       useNativeDriver: true,
-      duration: 400,
+      duration: animatedDuration,
       easing: Easing.bezier(.0, .74, .27, 1.19)
-    }).start(() => this.props.autohide && (this.timer = setTimeout(this.hide, this.props.duration)));
+    }).start(this.autohide);
   };
 
   public hide = (): void => {
     Animated.timing(this.translateY, {
-      toValue: (this.viewHeight + this.offset) * -1,
+      toValue: (this.viewHeight + this.offset * 2) * -1,
       useNativeDriver: true,
-      duration: 400,
+      duration: animatedDuration,
       easing: Easing.bezier(.53, .67, .19, 1.1)
     }).start();
   };
 
+  private autohide = () => {
+    const {autohide, duration} = this.props;
+    autohide && (this.timer = setTimeout(this.hide, duration));
+  }
+
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
-    const {translationY} = event.nativeEvent;
-    this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY);
+    const {translationY, velocityY} = event.nativeEvent;
+    if (velocityY > minVelocityToFling) {
+      this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY);
+    }
     if (this.props.onDragGestureEvent) {
       this.props.onDragGestureEvent(event);
     }
@@ -78,19 +87,22 @@ export class NotificationBase extends React.Component<Props, {}> {
 
   protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
     const {velocityY, translationY} = event.nativeEvent;
+
     if (this.props.onDragGestureHandlerStateChange) {
       this.props.onDragGestureHandlerStateChange(event);
     }
-    if (velocityY < -400) {
-      Animated.timing(this.translateY, {
-        duration: 600,
-        toValue: (this.viewHeight + this.offset) * -1,
+
+    if (velocityY < minVelocityToFling) {
+      Animated.spring(this.translateY, {
+        toValue: (this.viewHeight + this.offset * 2) * -1,
         useNativeDriver: true,
-        easing: Easing.bezier(.15, 0.9, .15, 1.1)
+        velocity: velocityY,
+        speed: 8
       }).start();
       return;
     }
-    if ((translationY > ((this.viewHeight / 2) * -1)) || (velocityY > -400)) {
+
+    if (translationY > ((this.viewHeight / 2) * -1)) {
       this.show();
     } else {
       this.hide();
@@ -102,12 +114,7 @@ export class NotificationBase extends React.Component<Props, {}> {
     this.viewHeight = height;
     if (!this.onLayoutHasBeenInvoked) {
       this.onLayoutHasBeenInvoked = true;
-
-      Animated.timing(this.translateY, {
-        duration: 0,
-        toValue: (height + this.offset) * -1,
-        useNativeDriver: true
-      }).start();
+      this.translateY.setValue((height + this.offset * 2) * -1)
     }
   };
 
