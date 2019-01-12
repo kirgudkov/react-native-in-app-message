@@ -19,7 +19,7 @@ React Native in-app platform-specific notifications.
 
 ## Usage
 
-```
+```javascript
 import {Notification} from "react-native-in-app-message";
 
 ...
