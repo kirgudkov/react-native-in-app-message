@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {Animated, Text, Easing} from "react-native";
-import {PanGestureHandlerGestureEvent} from "react-native-gesture-handler";
+import {PanGestureHandlerGestureEvent, State} from "react-native-gesture-handler";
 import {IOStyle} from "./iOStyle";
 import {Props} from './Props';
 
@@ -77,32 +77,31 @@ export class NotificationBase extends React.Component<Props, {}> {
 
   protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
     const {translationY, velocityY} = event.nativeEvent;
-    if (velocityY > minVelocityToFling) {
-      this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY);
-    }
+
+    this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY/3.5);
+
     if (this.props.onDragGestureEvent) {
       this.props.onDragGestureEvent(event);
     }
   };
 
   protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
-    const {velocityY, translationY} = event.nativeEvent;
+    const {velocityY, translationY, numberOfPointers} = event.nativeEvent;
 
     if (this.props.onDragGestureHandlerStateChange) {
       this.props.onDragGestureHandlerStateChange(event);
     }
 
-    if (velocityY < minVelocityToFling) {
+    if (velocityY < minVelocityToFling && numberOfPointers === 0) {
       Animated.spring(this.translateY, {
         toValue: (this.viewHeight + this.offset * 2) * -1,
         useNativeDriver: true,
         velocity: velocityY,
-        speed: 8
       }).start();
       return;
     }
 
-    if (translationY > ((this.viewHeight / 2) * -1)) {
+    if (translationY > ((this.viewHeight / 2) * -1) && numberOfPointers === 0) {
       this.show();
     } else {
       this.hide();
