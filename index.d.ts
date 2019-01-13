@@ -7,10 +7,10 @@ import {StyleProp, ViewStyle} from "react-native";
 
 export interface NotificationProperties {
   blurType?: 'xlight' | 'light' | 'dark', // iOS Only
-  showKnob?: boolean, // iOS Only
+  blurAmount?: number, // iOS Only
+  showKnob?: boolean,
   duration?: number,
   autohide?: boolean,
-  blurAmount?: number,
   text?: string,
   style?: StyleProp<ViewStyle> | {}, // iOS Only for now
   textColor?: string,

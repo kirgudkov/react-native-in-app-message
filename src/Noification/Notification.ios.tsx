@@ -7,7 +7,7 @@ import {
   State
 } from 'react-native-gesture-handler';
 import {NotificationBase} from './NotificationBase';
-import {BlurView} from "react-native-blur";
+import {Blur} from "../Blur/Blur";
 import {IOStyle} from "./iOStyle";
 import {Util} from "../Util";
 
@@ -36,7 +36,7 @@ export class Notification extends NotificationBase {
           <Animated.View onLayout={this.handleOnLayout} style={animatedStyle}>
             <Animated.View style={[IOStyle.innerContainer, style]}>
               <TouchableOpacity style={IOStyle.container} activeOpacity={1} onPress={onPress}>
-                <BlurView style={[IOStyle.absolute, {borderRadius: border || 14}]} blurType={blurType} blurAmount={blurAmount} />
+                <Blur style={[IOStyle.absolute, {borderRadius: border || 14}]} blurType={blurType} blurAmount={blurAmount} />
                 <ForceTouchGestureHandler
                   minForce={0.2}
                   enabled={useForceTouch}
