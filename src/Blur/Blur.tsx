@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types';
+import React from 'react'
 import { requireNativeComponent } from 'react-native'
 
 const NativeBlur = requireNativeComponent('Blur');
 
-export class Blur extends Component {
+interface Props {
+  blurType: string,
+  blurAmount: number
+}
+
+export class Blur extends React.Component<Props, {}> {
   render () {
     return <NativeBlur pointerEvents={'none'} {...this.props} />
   }
 }
-
-Blur.propTypes = {
-  blurType: PropTypes.string,
-  blurAmount: PropTypes.number,
-};

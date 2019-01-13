@@ -7,7 +7,7 @@ import {
   State
 } from 'react-native-gesture-handler';
 import {NotificationBase} from './NotificationBase';
-import {Blur} from "../Blur/Blur";
+import {Blur} from "../Blur";
 import {IOStyle} from "./iOStyle";
 import {Util} from "../Util";
 

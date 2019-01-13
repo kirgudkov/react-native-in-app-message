@@ -4,12 +4,12 @@ React Native in-app platform-specific notifications.
 <img src="https://user-images.githubusercontent.com/17552441/50742070-67691b00-1217-11e9-94b3-c569c9a8aa9a.gif" width="200" height="200" /><img src="https://user-images.githubusercontent.com/17552441/50742065-5ae4c280-1217-11e9-9b8e-0121a09d8be1.gif" width="200" height="200" /><img src="https://user-images.githubusercontent.com/17552441/50742058-47d1f280-1217-11e9-8554-51d02d5661e3.gif" width="200" height="200" /><img src="https://user-images.githubusercontent.com/17552441/50741960-c9288580-1215-11e9-8a4f-d2baa8778329.gif" width="200" height="200" /><img src="https://user-images.githubusercontent.com/17552441/50844169-399ce700-137b-11e9-96f6-a72eb483986f.gif" alt="onDragEvent example" width="200" height="200" /><img alt="force touch example" src="https://user-images.githubusercontent.com/17552441/50844280-7b2d9200-137b-11e9-8477-bc0fc120edda.gif" width="200" height="200" />
 
 
-- The package uses `react-native-blur` and `react-native-gesture-handler` to implement native-like appearance
 - Compatible with iPhone X, XR, XS, XS Max.
 - Allows you to use your own components.
 - Swipeable
 - Force Touch support
 - `onDrag` event support
+- The package `react-native-gesture-handler` to implement swipe and force touch gestures
 
 ## Installation
 
