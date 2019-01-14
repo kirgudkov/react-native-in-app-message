@@ -33,7 +33,8 @@ export const IOStyle = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    marginVertical: 16,
+    marginTop: 16,
+    marginBottom: 6,
     marginHorizontal: 10
   },
   knob: {

@@ -17,6 +17,7 @@ export class Notification extends NotificationBase {
     blurAmount: 7,
     duration: 2000,
     showKnob: true,
+    textColor: '#000',
     autohide: true,
     useForceTouch: false
   };
