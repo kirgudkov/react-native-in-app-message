@@ -43,6 +43,6 @@ export class Blur extends React.Component<BlurProps, {}> {}
 
 // iOS 10+ Only
 export class TapticFeedback {
-  static fire: Function
+  static impact: Function
 }
 

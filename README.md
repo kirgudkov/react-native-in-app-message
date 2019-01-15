@@ -70,4 +70,4 @@ render() {
 - Notification `import {Notification} from "react-native-in-app-message";`
 - Blur `import {Blur} from "react-native-in-app-message";`
 - TapticFeedback `import {TapticFeedback} from "react-native-in-app-message";`   
-  >Usage:  `TapticFeedback.fire();`
+  >Usage:  `TapticFeedback.impact();`

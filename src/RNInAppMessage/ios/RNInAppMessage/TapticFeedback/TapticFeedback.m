@@ -23,7 +23,7 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(fire) {
+RCT_EXPORT_METHOD(impact) {
     [self fireImpact];
 }
 

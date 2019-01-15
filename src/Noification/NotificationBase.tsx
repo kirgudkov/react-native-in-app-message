@@ -69,7 +69,7 @@ export class NotificationBase extends React.Component<Props, {}> {
     }
 
     if (tapticFeedback && IS_IOS) {
-      TapticFeedback.fire();
+      TapticFeedback.impact();
     }
   };
 

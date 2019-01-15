@@ -8,6 +8,4 @@
 
 @interface TapticFeedback : NSObject <RCTBridgeModule>
 
-//-(Boolean)isSupport
-
 @end
