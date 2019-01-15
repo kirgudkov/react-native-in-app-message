@@ -59,6 +59,9 @@ export class NotificationBase extends React.Component<Props, {}> {
       duration: animatedDuration,
       easing: Easing.bezier(.0, .74, .27, 1.19)
     }).start(this.autohide);
+    if (this.props.onShow) {
+      this.props.onShow();
+    }
   };
 
   public hide = (): void => {
@@ -68,6 +71,9 @@ export class NotificationBase extends React.Component<Props, {}> {
       duration: animatedDuration,
       easing: Easing.bezier(.53, .67, .19, 1.1)
     }).start();
+    if (this.props.onHide) {
+      this.props.onHide();
+    }
   };
 
   private autohide = () => {

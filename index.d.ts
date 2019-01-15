@@ -16,6 +16,8 @@ export interface NotificationProperties {
   textColor?: string,
   customComponent?: ReactNode,
   onPress?: () => void,
+  onShow?: () => void,
+  onHide?: () => void,
   onDragGestureEvent?: (event: PanGestureHandlerGestureEvent) => void,
   onDragGestureHandlerStateChange?: (event: PanGestureHandlerGestureEvent) => void,
   onForceTouchGestureEvent?: (event: ForceTouchGestureHandlerGestureEvent) => void, // iOS Only and iPhone 6s+
