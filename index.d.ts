@@ -31,3 +31,17 @@ export class Notification extends React.Component<NotificationProperties, {}> {
   show: Function;
   hide: Function;
 }
+
+export interface BlurProps {
+  blurType?: 'xlight' | 'light' | 'dark', // iOS Only
+  blurAmount?: number // iOS Only
+  style?: StyleProp<ViewStyle>
+}
+
+export class Blur extends React.Component<BlurProps, {}> {}
+
+// iOS 10+ Only
+export class TapticFeedback {
+  static fire: Function
+}
+

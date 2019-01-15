@@ -11,6 +11,7 @@
 		3CDE030A21EBEB21003D9D15 /* Blur.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3CDE030721EBEB21003D9D15 /* Blur.h */; };
 		3CDE031421EBEB53003D9D15 /* BlurAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE031021EBEB52003D9D15 /* BlurAmount.m */; };
 		3CDE031521EBEB53003D9D15 /* BlurManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE031321EBEB53003D9D15 /* BlurManager.m */; };
+		3CDFEAF421EE769D006504ED /* TapticFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDFEAF321EE769D006504ED /* TapticFeedback.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,13 +28,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3CDE030421EBEB21003D9D15 /* libBlur.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBlur.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CDE030421EBEB21003D9D15 /* libRNInAppMessage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNInAppMessage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDE030721EBEB21003D9D15 /* Blur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blur.h; sourceTree = "<group>"; };
 		3CDE030821EBEB21003D9D15 /* Blur.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Blur.m; sourceTree = "<group>"; };
 		3CDE031021EBEB52003D9D15 /* BlurAmount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurAmount.m; sourceTree = "<group>"; };
 		3CDE031121EBEB52003D9D15 /* BlurAmount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurAmount.h; sourceTree = "<group>"; };
 		3CDE031221EBEB53003D9D15 /* BlurManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurManager.h; sourceTree = "<group>"; };
 		3CDE031321EBEB53003D9D15 /* BlurManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurManager.m; sourceTree = "<group>"; };
+		3CDFEAF221EE769D006504ED /* TapticFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapticFeedback.h; sourceTree = "<group>"; };
+		3CDFEAF321EE769D006504ED /* TapticFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapticFeedback.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +53,7 @@
 		3CDE02FB21EBEB21003D9D15 = {
 			isa = PBXGroup;
 			children = (
-				3CDE030621EBEB21003D9D15 /* Blur */,
+				3CDE030621EBEB21003D9D15 /* RNInAppMessage */,
 				3CDE030521EBEB21003D9D15 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,12 +61,21 @@
 		3CDE030521EBEB21003D9D15 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CDE030421EBEB21003D9D15 /* libBlur.a */,
+				3CDE030421EBEB21003D9D15 /* libRNInAppMessage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3CDE030621EBEB21003D9D15 /* Blur */ = {
+		3CDE030621EBEB21003D9D15 /* RNInAppMessage */ = {
+			isa = PBXGroup;
+			children = (
+				3CDFEAE721EE7404006504ED /* TapticFeedback */,
+				3CDFEAE621EE73B4006504ED /* Blur */,
+			);
+			path = RNInAppMessage;
+			sourceTree = "<group>";
+		};
+		3CDFEAE621EE73B4006504ED /* Blur */ = {
 			isa = PBXGroup;
 			children = (
 				3CDE030721EBEB21003D9D15 /* Blur.h */,
@@ -76,12 +88,21 @@
 			path = Blur;
 			sourceTree = "<group>";
 		};
+		3CDFEAE721EE7404006504ED /* TapticFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				3CDFEAF221EE769D006504ED /* TapticFeedback.h */,
+				3CDFEAF321EE769D006504ED /* TapticFeedback.m */,
+			);
+			path = TapticFeedback;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3CDE030321EBEB21003D9D15 /* Blur */ = {
+		3CDE030321EBEB21003D9D15 /* RNInAppMessage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3CDE030D21EBEB21003D9D15 /* Build configuration list for PBXNativeTarget "Blur" */;
+			buildConfigurationList = 3CDE030D21EBEB21003D9D15 /* Build configuration list for PBXNativeTarget "RNInAppMessage" */;
 			buildPhases = (
 				3CDE030021EBEB21003D9D15 /* Sources */,
 				3CDE030121EBEB21003D9D15 /* Frameworks */,
@@ -91,9 +112,9 @@
 			);
 			dependencies = (
 			);
-			name = Blur;
+			name = RNInAppMessage;
 			productName = Blur;
-			productReference = 3CDE030421EBEB21003D9D15 /* libBlur.a */;
+			productReference = 3CDE030421EBEB21003D9D15 /* libRNInAppMessage.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +131,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3CDE02FF21EBEB21003D9D15 /* Build configuration list for PBXProject "Blur" */;
+			buildConfigurationList = 3CDE02FF21EBEB21003D9D15 /* Build configuration list for PBXProject "RNInAppMessage" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -122,7 +143,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3CDE030321EBEB21003D9D15 /* Blur */,
+				3CDE030321EBEB21003D9D15 /* RNInAppMessage */,
 			);
 		};
 /* End PBXProject section */
@@ -133,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CDE031421EBEB53003D9D15 /* BlurAmount.m in Sources */,
+				3CDFEAF421EE769D006504ED /* TapticFeedback.m in Sources */,
 				3CDE031521EBEB53003D9D15 /* BlurManager.m in Sources */,
 				3CDE030921EBEB21003D9D15 /* Blur.m in Sources */,
 			);
@@ -260,7 +282,7 @@
 				DEVELOPMENT_TEAM = HZRCHUKZ6R;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(BUILT_PRODUCTS_DIR)",
+					"$(BUILT_PRODUCTS_DIR)/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,7 +298,7 @@
 				DEVELOPMENT_TEAM = HZRCHUKZ6R;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(BUILT_PRODUCTS_DIR)",
+					"$(BUILT_PRODUCTS_DIR)/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,7 +310,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3CDE02FF21EBEB21003D9D15 /* Build configuration list for PBXProject "Blur" */ = {
+		3CDE02FF21EBEB21003D9D15 /* Build configuration list for PBXProject "RNInAppMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3CDE030B21EBEB21003D9D15 /* Debug */,
@@ -297,7 +319,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3CDE030D21EBEB21003D9D15 /* Build configuration list for PBXNativeTarget "Blur" */ = {
+		3CDE030D21EBEB21003D9D15 /* Build configuration list for PBXNativeTarget "RNInAppMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3CDE030E21EBEB21003D9D15 /* Debug */,
