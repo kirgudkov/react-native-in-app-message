@@ -1,11 +1,14 @@
 import React, {ReactNode} from 'react';
-import {Animated, Text, Easing} from "react-native";
+import {Animated, Text, Easing, Platform} from "react-native";
 import {PanGestureHandlerGestureEvent, State} from "react-native-gesture-handler";
 import {IOStyle} from "./iOStyle";
 import {Props} from './Props';
+import {TapticFeedback} from "../../index";
 
 const animatedDuration = 400;
 const minVelocityToFling = -250;
+
+const IS_IOS = Platform.OS === 'ios';
 
 export class NotificationBase extends React.Component<Props, {}> {
 
@@ -52,6 +55,7 @@ export class NotificationBase extends React.Component<Props, {}> {
   protected timer!: number;
 
   public show = (): void => {
+    const {onShow, tapticFeedback} = this.props;
     clearTimeout(this.timer);
     Animated.timing(this.translateY, {
       toValue: 0,
@@ -59,8 +63,13 @@ export class NotificationBase extends React.Component<Props, {}> {
       duration: animatedDuration,
       easing: Easing.bezier(.0, .74, .27, 1.19)
     }).start(this.autohide);
-    if (this.props.onShow) {
-      this.props.onShow();
+
+    if (onShow) {
+      onShow();
+    }
+
+    if (tapticFeedback && IS_IOS) {
+      TapticFeedback.fire();
     }
   };
 

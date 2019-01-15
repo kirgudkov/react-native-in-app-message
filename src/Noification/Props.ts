@@ -8,6 +8,7 @@ import {StyleProp, ViewStyle} from "react-native";
 
 export interface Props {
   blurType?: 'xlight' | 'light' | 'dark', // iOS Only
+  tapticFeedback?: boolean, //iOS 10+ Only
   blurAmount?: number, // iOS Only
   duration?: number,
   autohide?: boolean,
