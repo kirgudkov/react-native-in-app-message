@@ -16,7 +16,7 @@ React Native in-app platform-specific notifications.
 - Run `npm install react-native-in-app-message`
 - Run `react-native link react-native-in-app-message`
 
-- The package use `react-native-gesture-handler` to implement swipe and force touch gestures
+The package use `react-native-gesture-handler` to implement swipe and force touch gestures
 - Run `npm install react-native-gesture-handler` and follow the <a href="https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html#installation">linking guide</a>. Required for both platforms
 
 ## Usage
