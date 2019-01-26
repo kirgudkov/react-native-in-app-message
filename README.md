@@ -35,7 +35,7 @@ render() {
     return (
       <Fragment>
         <AppNavigator/>
-        <Notification text={'Hello world'} onPress={() => Notification.hide()} textColor={'#000'} />
+        <Notification text={'Hello world'} onPress={Notification.hide} />
       </Fragment>
     )
   }
