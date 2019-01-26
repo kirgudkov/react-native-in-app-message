@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Animated, Dimensions, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Animated, Dimensions, View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { PanGestureHandler, ForceTouchGestureHandler } from 'react-native-gesture-handler';
 import { NotificationBase } from './NotificationBase';
 import { IOStyle } from "./iOStyle";
@@ -14,10 +14,11 @@ export class Notification extends NotificationBase {
 		showKnob: true,
 		textColor: '#000',
 		autohide: true,
+		hideStatusBar: true,
 		useForceTouch: false
 	};
 
-	offset = Util.isIphoneX() ? 42 : 22;
+	offset = Util.isIphoneX() ? (this.props.hideStatusBar ? 28 : 42) : (this.props.hideStatusBar ? 8 : 22);
 
 	render() {
 		const {textColor, customComponent, blurAmount, blurType = 'light', onPress, style, useForceTouch, showKnob, onForceTouchGestureEvent, onForceTouchHandlerStateChange} = this.props;
@@ -35,7 +36,7 @@ export class Notification extends NotificationBase {
 								<Blur style={[IOStyle.absolute, {borderRadius: border || 14}]} blurType={blurType}
 											blurAmount={blurAmount} />
 								<ForceTouchGestureHandler
-									minForce={0.1}
+									minForce={0.2}
 									enabled={useForceTouch}
 									onGestureEvent={onForceTouchGestureEvent}
 									onHandlerStateChange={onForceTouchHandlerStateChange}>

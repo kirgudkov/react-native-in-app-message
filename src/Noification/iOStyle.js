@@ -9,18 +9,18 @@ export const IOStyle = StyleSheet.create({
 		width: '100%'
 	},
 	notification: {
-		width: '95%',
+		width: '96.5%',
 		zIndex: 2,
 		elevation: 2,
 		backgroundColor: 'transparent',
 		alignItems: 'center',
 		justifyContent: 'center',
-		shadowOpacity: 0.4,
-		shadowRadius: 10,
+		shadowOpacity: 0.1,
+		shadowRadius: 4,
 		shadowColor: '#000',
 		shadowOffset: {
 			width: 0,
-			height: 6,
+			height: 5,
 		},
 		borderRadius: 14,
 	},

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, Text, Easing, Platform } from "react-native";
+import { Animated, Text, Easing, Platform, StatusBar } from "react-native";
 import { IOStyle } from "./iOStyle";
 import { TapticFeedback } from "../../index";
 
@@ -54,33 +54,39 @@ export class NotificationBase extends React.Component {
 	timer;
 
 	show = () => {
-		const {onShow, tapticFeedback} = this.props;
+		const {onShow, tapticFeedback, hideStatusBar} = this.props;
 		clearTimeout(this.timer);
 		Animated.timing(this.translateY, {
 			toValue: 0,
 			useNativeDriver: true,
 			duration: animatedDuration,
-			easing: Easing.bezier(.0, .74, .27, 1.19)
+			easing: Easing.bezier(.0, .74, .2, 1.12)
 		}).start(this.autohide);
 
 		if (onShow) {
 			onShow();
 		}
-
+		if (hideStatusBar) {
+			IS_IOS && StatusBar.setHidden(true, 'slide');
+		}
 		if (tapticFeedback && IS_IOS) {
 			TapticFeedback.impact();
 		}
 	};
 
 	hide = () => {
+		const {hideStatusBar, onHide} = this.props;
 		Animated.timing(this.translateY, {
 			toValue: (this.viewHeight + navBarOffset + this.offset * 2) * -1,
 			useNativeDriver: true,
 			duration: animatedDuration,
 			easing: Easing.bezier(.53, .67, .19, 1.1)
 		}).start();
-		if (this.props.onHide) {
-			this.props.onHide();
+		if (onHide) {
+			onHide();
+		}
+		if (hideStatusBar) {
+			IS_IOS && StatusBar.setHidden(false, 'slide');
 		}
 	};
 
