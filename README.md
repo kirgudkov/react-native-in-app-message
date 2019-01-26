@@ -14,7 +14,7 @@ React Native in-app platform-specific notifications.
 ## Installation
 
 - Run `npm install react-native-in-app-message`
-- Run `react-native link react-native-in-app-message`
+- Run `react-native link react-native-in-app-message` - required for iOS
 - Run `npm install react-native-gesture-handler` and follow the <a href="https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html#installation">linking guide</a>. Required for both platforms
 
 ## Usage
@@ -32,10 +32,10 @@ Notification.show(); // if You have one instance
 //otherwise component will be shown inside the navigator
 render() {
     return (
-      <Fragment>
+      <React.Fragment>
         <AppNavigator/>
         <Notification text={'Hello world'} onPress={Notification.hide} />
-      </Fragment>
+      </React.Fragment>
     )
   }
 
@@ -51,19 +51,20 @@ render() {
 
 - `blurType` - must be one of `'xlight' | 'light' | 'dark'`. iOS Only
 - `blurAmount` - `number`. iOS Only
-- `tapticFeedback` - `boolean`. iOS 10+ Only
-- `showKnob` - `boolean`. iOS Only.
-- `duration` - `number`. Message duration
-- `autohide` - `boolean`.
+- `tapticFeedback` - `boolean`. iOS 10 and upper
+- `showKnob` - `boolean`. iOS Only
+- `duration` - `number`
+- `autohide` - `boolean`
+- `hideStatusBar` - `boolean`
 - `text` - `string`. The text for the message. Required if `customComponent` is not used.
 - `textColor` - `string`.
 - `customComponent` - `ReactNode`.
 - `onPress` - `() => void`.
 - `onDragGestureEvent` - `(event: PanGestureHandlerGestureEvent) => void`.
 - `onDragGestureHandlerStateChange` - `(event: PanGestureHandlerGestureEvent) => void`.
-- `onForceTouchGestureEvent` - `(event: ForceTouchGestureHandlerGestureEvent) => void`. iOS Only and iPhone 6s+
-- `onForceTouchHandlerStateChange` - `(event: ForceTouchGestureHandlerStateChangeEvent) => void`.  iOS Only and iPhone 6s+
-- `useForceTouch` - `boolean`. iOS Only and iPhone 6s+ (default - `false`)
+- `onForceTouchGestureEvent` - `(event: ForceTouchGestureHandlerGestureEvent) => void`. iOS Only and iPhone 6s and upper
+- `onForceTouchHandlerStateChange` - `(event: ForceTouchGestureHandlerStateChangeEvent) => void`.  iOS Only and iPhone 6s and upper
+- `useForceTouch` - `boolean`. iOS Only and iPhone 6s and upper (default - `false`)
 
 ## Modules
 - Notification `import {Notification} from "react-native-in-app-message";`
