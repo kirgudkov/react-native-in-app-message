@@ -1,8 +1,7 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {Animated, Text, Easing, Platform} from "react-native";
 import {PanGestureHandlerGestureEvent, State} from "react-native-gesture-handler";
 import {IOStyle} from "./iOStyle";
-import {Props} from './Props';
 import {TapticFeedback} from "../../index";
 
 const animatedDuration = 400;
@@ -10,12 +9,12 @@ const minVelocityToFling = -250;
 
 const IS_IOS = Platform.OS === 'ios';
 
-export class NotificationBase extends React.Component<Props, {}> {
+export class NotificationBase extends React.Component {
 
-  static show: Function;
-  static hide: Function;
+  static show;
+  static hide;
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
 
     NotificationBase.show = () => {
@@ -38,23 +37,23 @@ export class NotificationBase extends React.Component<Props, {}> {
    * onLayout is not invoked immediately, so by default the value is pretty high.
    * Afterwards the value will be changed depending on the @viewHeight value
    */
-  protected translateY: Animated.Value = new Animated.Value(-9000);
+  translateY = new Animated.Value(-9000);
 
   /**
    * Default StatusBar offset.
    * .ios component overrides it depending on the type of iPhone
    */
-  protected offset: number = 22;
+  offset = 22;
 
   /**
    * Height of Notification's root view, it changes after onLayout invoking
    */
-  protected viewHeight: number = 0;
-  private onLayoutHasBeenInvoked = false;
+  viewHeight = 0;
+  onLayoutHasBeenInvoked = false;
 
-  protected timer!: number;
+  timer;
 
-  public show = (): void => {
+  show = () => {
     const {onShow, tapticFeedback} = this.props;
     clearTimeout(this.timer);
     Animated.timing(this.translateY, {
@@ -73,7 +72,7 @@ export class NotificationBase extends React.Component<Props, {}> {
     }
   };
 
-  public hide = (): void => {
+  hide = () => {
     Animated.timing(this.translateY, {
       toValue: (this.viewHeight + this.offset * 2) * -1,
       useNativeDriver: true,
@@ -85,12 +84,12 @@ export class NotificationBase extends React.Component<Props, {}> {
     }
   };
 
-  private autohide = () => {
+  autohide = () => {
     const {autohide, duration} = this.props;
     autohide && (this.timer = setTimeout(this.hide, duration));
   };
 
-  protected onGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
+  onGestureEvent = (event) => {
     const {translationY} = event.nativeEvent;
 
     this.translateY.setValue(translationY > 0 ? translationY / 9 : translationY / 3.5);
@@ -100,7 +99,7 @@ export class NotificationBase extends React.Component<Props, {}> {
     }
   };
 
-  protected onHandlerStateChange = (event: PanGestureHandlerGestureEvent): void => {
+  onHandlerStateChange = (event) => {
     const {velocityY, translationY, numberOfPointers} = event.nativeEvent;
 
     if (this.props.onDragGestureHandlerStateChange) {
@@ -123,7 +122,7 @@ export class NotificationBase extends React.Component<Props, {}> {
     }
   };
 
-  protected handleOnLayout = (event: any): void => {
+  handleOnLayout = (event) => {
     const {height} = event.nativeEvent.layout;
     this.viewHeight = height;
     if (!this.onLayoutHasBeenInvoked) {
@@ -132,11 +131,11 @@ export class NotificationBase extends React.Component<Props, {}> {
     }
   };
 
-  protected renderCustomComponent(): ReactNode {
+  renderCustomComponent() {
     return this.props.customComponent;
   }
 
-  protected renderOwnComponent(): ReactNode {
+  renderOwnComponent() {
     const {textColor, text} = this.props;
     return <Text style={[IOStyle.text, {color: textColor}]}>{text}</Text>;
   }

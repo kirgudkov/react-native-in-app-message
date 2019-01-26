@@ -1,4 +1,5 @@
 import { Dimensions } from 'react-native';
+
 export class Util {
   static isIphoneX() {
     const {height, width} = Dimensions.get('window');

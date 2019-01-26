@@ -29,7 +29,5 @@
     "url": "https://github.com/KirillGudkov/react-native-in-app-message/issues"
   },
   "homepage": "https://github.com/KirillGudkov/react-native-in-app-message#readme",
-  "devDependencies": {
-    "typescript": "^3.2.2"
-  }
+  "devDependencies": {}
 }

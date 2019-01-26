@@ -3,12 +3,7 @@ import { requireNativeComponent } from 'react-native'
 
 const NativeBlur = requireNativeComponent('Blur');
 
-interface Props {
-  blurType: string,
-  blurAmount: number
-}
-
-export class Blur extends React.Component<Props, {}> {
+export class Blur extends React.Component{
   render () {
     return <NativeBlur pointerEvents={'none'} {...this.props} />
   }

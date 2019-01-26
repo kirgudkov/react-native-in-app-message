@@ -1,4 +1,4 @@
-import React, {ReactNode, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import {Animated, Dimensions, View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {
   PanGestureHandler, PanGestureHandlerGestureEvent, ForceTouchGestureHandler,
@@ -22,9 +22,9 @@ export class Notification extends NotificationBase {
     useForceTouch: false
   };
 
-  protected offset: number = Util.isIphoneX() ? 42 : 22;
+  offset= Util.isIphoneX() ? 42 : 22;
 
-  render(): ReactNode {
+  render() {
     const {textColor, customComponent, blurAmount, blurType = 'light', onPress, style, useForceTouch, showKnob, onForceTouchGestureEvent, onForceTouchHandlerStateChange} = this.props;
     const animatedStyle = [IOStyle.notification, {
       top: this.offset,

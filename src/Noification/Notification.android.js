@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {Animated, Dimensions, View, Text, TouchableOpacity} from 'react-native';
 import {PanGestureHandler, PanGestureHandlerGestureEvent} from 'react-native-gesture-handler';
 import {NotificationBase} from './NotificationBase';
@@ -11,14 +11,14 @@ export class Notification extends NotificationBase {
     autohide: true
   };
 
-  protected offset = 0;
+  offset = 0;
 
-  protected renderOwnComponent(): ReactNode {
+  renderOwnComponent() {
     const {textColor, text} = this.props;
     return <Text style={[androidStyle.text, {color: textColor}]}>{text}</Text>;
   }
 
-  render(): ReactNode {
+  render() {
     const {customComponent, onPress} = this.props;
     const animatedStyle = [androidStyle.notification, {top: this.offset, transform: [{translateY: this.translateY}]}];
     return (
