@@ -10,7 +10,6 @@ React Native in-app platform-specific notifications.
 - Force Touch support
 - Taptic Engine feedback support
 - `onDrag` gesture event support
-- The package `react-native-gesture-handler` to implement swipe and force touch gestures
 
 ## Installation
 
