@@ -3,7 +3,7 @@ import { Animated, Text, Easing, Platform, StatusBar } from "react-native";
 import { IOStyle } from "./iOStyle";
 import { TapticFeedback } from "../../index";
 
-const animatedDuration = 400;
+const animatedDuration = 350;
 const minVelocityToFling = -250;
 const navBarOffset = 56;
 
@@ -60,7 +60,7 @@ export class NotificationBase extends React.Component {
 			toValue: 0,
 			useNativeDriver: true,
 			duration: animatedDuration,
-			easing: Easing.bezier(.0, .74, .2, 1.12)
+			easing: Easing.bezier(.0, .74, .2, IS_IOS ? 1.12 : 1)
 		}).start(this.autohide);
 
 		if (onShow) {

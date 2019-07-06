@@ -20,7 +20,7 @@ export interface NotificationProperties {
   onPress?: () => void,
   onShow?: () => void,
   onHide?: () => void,
-  hideStatusBar: boolean, // iOS only, default = true
+  hideStatusBar?: boolean, // iOS only, default = true
   onDragGestureEvent?: (event: PanGestureHandlerGestureEvent) => void,
   onDragGestureHandlerStateChange?: (event: PanGestureHandlerGestureEvent) => void,
   onForceTouchGestureEvent?: (event: ForceTouchGestureHandlerGestureEvent) => void, // iOS Only and iPhone 6s+

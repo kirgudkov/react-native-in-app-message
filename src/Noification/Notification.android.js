@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Animated, Dimensions, View, Text, TouchableOpacity } from 'react-native';
+import { Animated, View, Text, TouchableOpacity } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import { NotificationBase } from './NotificationBase';
 import { androidStyle } from "./androidStyle";
@@ -46,11 +46,12 @@ export class Notification extends NotificationBase {
 	}
 
 	render() {
-		const {customComponent, onPress} = this.props;
-		const animatedStyle = [androidStyle.notification, {
-			top: this.offset,
-			transform: [{translateY: this.translateY}]
-		}];
+		const {customComponent, onPress, style} = this.props;
+		const animatedStyle = [androidStyle.notification,
+			style, {
+				top: this.offset,
+				transform: [{translateY: this.translateY}]
+			}];
 		return (
 			<Fragment>
 				<PanGestureHandler onHandlerStateChange={this.onHandlerStateChange} onGestureEvent={this.onGestureEvent}>
