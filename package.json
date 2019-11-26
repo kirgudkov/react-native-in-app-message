@@ -1,10 +1,11 @@
 {
   "name": "react-native-in-app-message",
-  "version": "1.0.2",
+  "version": "1.0.31",
   "description": "React Native in-app native-like notifications.",
   "files": [
     "src",
-    "index.d.ts"
+    "index.d.ts",
+    "react-native-in-app-message.podspec"
   ],
   "keywords": [
     "react-native",
