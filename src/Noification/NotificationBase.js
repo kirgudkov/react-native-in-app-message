@@ -142,7 +142,7 @@ export class NotificationBase extends React.Component {
 	}
 
 	renderOwnComponent() {
-		const {textColor, text} = this.props;
-		return <Text style={[IOStyle.text, {color: textColor}]}>{text}</Text>;
+		const {textColor, text, maxFontSizeMultiplier, allowFontScaling} = this.props;
+		return <Text maxFontSizeMultiplier={maxFontSizeMultiplier} allowFontScaling={allowFontScaling} style={[IOStyle.text, {color: textColor}]}>{text}</Text>;
 	}
 }

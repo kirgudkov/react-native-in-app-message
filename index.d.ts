@@ -9,6 +9,7 @@ import {
 export interface NotificationProperties {
   blurType?: 'xlight' | 'light' | 'dark', // iOS Only, default - light
   blurAmount?: number, // iOS Only, default - 7
+  useBlur?: boolean, // iOS Only, default - true
   tapticFeedback?: boolean, //iOS 10+ Only, default - false
   showKnob?: boolean, // default - true
   duration?: number, // default - 2000
@@ -25,7 +26,9 @@ export interface NotificationProperties {
   onDragGestureHandlerStateChange?: (event: PanGestureHandlerGestureEvent) => void,
   onForceTouchGestureEvent?: (event: ForceTouchGestureHandlerGestureEvent) => void, // iOS Only and iPhone 6s+
   onForceTouchHandlerStateChange?: (event: ForceTouchGestureHandlerStateChangeEvent) => void, // iOS Only and iPhone 6s+
-  useForceTouch?: boolean // iOS Only and iPhone 6s+, default - false
+  useForceTouch?: boolean, // iOS Only and iPhone 6s+, default - false
+  maxFontSizeMultiplier?: number, // default- 0
+  allowFontScaling?: boolean // default - true
 }
 
 export class Notification extends React.Component<NotificationProperties, {}> {
