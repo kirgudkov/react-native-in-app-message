@@ -49,6 +49,7 @@ render() {
 
 ## Props
 
+- `useBlur` - `boolean`. Default `true`. iOS Only.
 - `blurType` - must be one of `'xlight' | 'light' | 'dark'`. iOS Only
 - `blurAmount` - `number`. iOS Only
 - `tapticFeedback` - `boolean`. iOS 10 and upper
@@ -65,6 +66,8 @@ render() {
 - `onForceTouchGestureEvent` - `(event: ForceTouchGestureHandlerGestureEvent) => void`. iOS Only and iPhone 6s and upper
 - `onForceTouchHandlerStateChange` - `(event: ForceTouchGestureHandlerStateChangeEvent) => void`.  iOS Only and iPhone 6s and upper
 - `useForceTouch` - `boolean`. iOS Only and iPhone 6s and upper (default - `false`)
+- `maxFontSizeMultiplier` - `number`. [Open doc](https://reactnative.dev/docs/text#maxfontsizemultiplier)
+- `allowFontScaling` - `boolean`. [Open doc](https://reactnative.dev/docs/text#allowfontscaling)
 
 ## Modules
 - Notification `import {Notification} from "react-native-in-app-message";`
