@@ -61,12 +61,12 @@ export class NotificationBase extends React.Component {
       hideStatusBar,
     } = this.props;
 
-    clearTimeout(this.timer);
+    this.autohide();
 
     Animated.spring(this.translateY, {
       toValue: 0,
       useNativeDriver: true,
-    }).start(this.autohide);
+    }).start();
 
     if (onShow) {
       onShow();
@@ -111,6 +111,8 @@ export class NotificationBase extends React.Component {
       duration,
     } = this.props;
 
+    clearTimeout(this.timer);
+    this.timer = undefined;
     autohide && (this.timer = setTimeout(this.hide, duration));
   };
 
