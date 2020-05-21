@@ -29,10 +29,8 @@ export interface NotificationProperties {
 }
 
 export class Notification extends React.Component<NotificationProperties, {}> {
-  static show: Function;
-  static hide: Function;
-  show: Function;
-  hide: Function;
+  show: () => void;
+  hide: () => void;
 }
 
 export interface BlurProps {

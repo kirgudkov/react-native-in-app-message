@@ -23,9 +23,7 @@ React Native in-app platform-specific notifications.
 import {Notification} from "react-native-in-app-message";
 
 ...
-// Somewhere call
-Notification.show(); // if You have one instance
-// or ref.show() if You need to show specific instance
+this.ref.current?.show();
 ...
 
 //It's important to declare Notification component next to root component
@@ -34,7 +32,7 @@ render() {
     return (
       <React.Fragment>
         <AppNavigator/>
-        <Notification text={'Hello world'} onPress={Notification.hide} />
+        <Notification text={'Hello world'} ref={this.ref} />
       </React.Fragment>
     )
   }
@@ -42,10 +40,8 @@ render() {
 ```
 
 ## Methods
-- static `show()`
-- static `hide()`
-- `ref.show()`
-- `ref.hide()`
+- `show()`
+- `hide()`
 
 ## Props
 
