@@ -36,8 +36,9 @@ render() {
       </React.Fragment>
     )
   }
-
 ```
+
+There is an [example](https://github.com/KirillGudkov/in-app-message-example) of usage
 
 ## Methods
 - `show()`
